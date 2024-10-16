@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Bệnh Nhân Theo Khoa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2E86C1;
+            text-align: center;
+        }
+        select {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .action-buttons button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quản Lý Bệnh Nhân Theo Khoa</h1>
+
+    <!-- Select Box Cho Khoa -->
+    <label for="selectKhoa"><strong>Chọn Khoa:</strong></label>
+    <select id="selectKhoa">
+        <option value="">Hãy chọn khoa</option>
+        <!-- Các tùy chọn khoa sẽ được thêm vào đây bằng JavaScript -->
+    </select>
+
+    <!-- Bảng Hiển Thị Bệnh Nhân -->
+    <h2>Danh Sách Bệnh Nhân</h2>
+    <table id="tableBenhNhan">
+        <thead>
+            <tr>
+                <th>Mã Số Bệnh Nhân</th>
+                <th>Họ Tên</th>
+                <th>Địa Chỉ</th>
+                <th>Ngày Nhập Viện</th>
+                <th>Mô Tả Bệnh Án</th>
+                <th>Số Ngày Nhập Viện</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dữ liệu bệnh nhân sẽ được thêm vào đây bằng JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Form Thêm Mới Bệnh Nhân -->
+    <div class="form-container">
+        <h2>Thêm Bệnh Nhân Mới</h2>
+        <form id="formThemBN">
+            <label for="maSoBN">Mã Số Bệnh Nhân:</label>
+            <input type="text" id="maSoBN" required>
+
+            <label for="hoTen">Họ Tên:</label>
+            <input type="text" id="hoTen" required maxlength="100">
+
+            <label for="diaChi">Địa Chỉ:</label>
+            <input type="text" id="diaChi" required>
+
+            <label for="ngayNhapVien">Ngày Nhập Viện:</label>
+            <input type="date" id="ngayNhapVien" required>
+
+            <label for="moTaBenhAn">Mô Tả Bệnh Án:</label>
+            <textarea id="moTaBenhAn" rows="3" required></textarea>
+
+            <label for="soNgayNhapVien">Số Ngày Nhập Viện:</label>
+            <input type="number" id="soNgayNhapVien" required min="0">
+
+            <button type="submit">Thêm Bệnh Nhân</button>
+        </form>
+    </div>
+
+    <!-- Form Cập Nhật Mô Tả Bệnh Án -->
+    <div class="form-container">
+        <h2>Cập Nhật Mô Tả Bệnh Án của BN002</h2>
+        <form id="formCapNhatBN002">
+            <label for="moTaCapNhat">Mô Tả Bệnh Án Mới:</label>
+            <textarea id="moTaCapNhat" rows="3" required></textarea>
+            <button type="submit">Cập Nhật</button>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dữ liệu JSON ban đầu
+        let data = {
+            "DanhsachKhoa": [
+                {
+                    "MaKhoa": "K0001",
+                    "TenKhoa": "Phòng Nội",
+                    "BenhNhan": [
+                        {
+                            "MaSoBN": "BN0001",
+                            "HoTen": "Nguyễn Văn A",
+                            "DiaChi": "Hà Nội",
+                            "NgayNhapVien": "2024-10-01",
+                            "MoTaBenhAn": "Bệnh nhân bị tiểu đường loại 2.",
+                            "SoNgayNhapVien": 10
+                        },
+                        {
+                            "MaSoBN": "BN0002",
+                            "HoTen": "Trần Thị B",
+                            "DiaChi": "Hồ Chí Minh",
+                            "NgayNhapVien": "2024-10-05",
+                            "MoTaBenhAn": "Bệnh nhân bị cao huyết áp.",
+                            "SoNgayNhapVien": 5
+                        }
+                    ]
+                },
+                {
+                    "MaKhoa": "K0002",
+                    "TenKhoa": "Phòng Ngoại",
+                    "BenhNhan": [
+                        {
+                            "MaSoBN": "BN0003",
+                            "HoTen": "Đỗ Văn C",
+                            "DiaChi": "Đà Nẵng",
+                            "NgayNhapVien": "2024-10-10",
+                            "MoTaBenhAn": "Bệnh nhân bị viêm phổi.",
+                            "SoNgayNhapVien": 7
+                        },
+                        {
+                            "MaSoBN": "BN0004",
+                            "HoTen": "Phạm Thị D",
+                            "DiaChi": "Hải Phòng",
+                            "NgayNhapVien": "2024-10-12",
+                            "MoTaBenhAn": "Bệnh nhân bị gãy xương.",
+                            "SoNgayNhapVien": 3
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Hàm để tải danh sách khoa vào select box
+        function loadKhoa() {
+            const selectKhoa = document.getElementById('selectKhoa');
+            data.DanhsachKhoa.forEach(khoa => {
+                const option = document.createElement('option');
+                option.value = khoa.MaKhoa;
+                option.textContent = khoa.TenKhoa;
+                selectKhoa.appendChild(option);
+            });
+        }
+
+        // Hàm để hiển thị danh sách bệnh nhân của một khoa
+        function displayBenhNhan(maKhoa) {
+            const tableBody = document.querySelector('#tableBenhNhan tbody');
+            tableBody.innerHTML = ''; // Xóa nội dung bảng hiện tại
+
+            if (maKhoa === "") {
+                // Nếu chưa chọn khoa, không hiển thị gì
+                return;
+            }
+
+            // Tìm khoa theo MaKhoa
+            const khoa = data.DanhsachKhoa.find(k => k.MaKhoa === maKhoa);
+            if (khoa && khoa.BenhNhan.length > 0) {
+                khoa.BenhNhan.forEach(bn => {
+                    const row = document.createElement('tr');
+
+                    // Tạo các ô cho từng thuộc tính của bệnh nhân
+                    for (let key of ['MaSoBN', 'HoTen', 'DiaChi', 'NgayNhapVien', 'MoTaBenhAn', 'SoNgayNhapVien']) {
+                        const cell = document.createElement('td');
+                        cell.textContent = bn[key];
+                        row.appendChild(cell);
+                    }
+
+                    // Tạo ô cho hành động (Xóa)
+                    const actionCell = document.createElement('td');
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Xóa';
+                    deleteButton.onclick = () => xoaBenhNhan(maKhoa, bn.MaSoBN);
+                    actionCell.appendChild(deleteButton);
+                    row.appendChild(actionCell);
+
+                    tableBody.appendChild(row);
+                });
+            } else {
+                // Nếu không có bệnh nhân nào trong khoa
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                cell.colSpan = 7;
+                cell.textContent = 'Không có bệnh nhân nào trong khoa này.';
+                cell.style.textAlign = 'center';
+                row.appendChild(cell);
+                tableBody.appendChild(row);
+            }
+        }
+
+        // Hàm để xóa bệnh nhân theo MaSoBN và MaKhoa
+        function xoaBenhNhan(maKhoa, maSoBN) {
+            // Xác nhận trước khi xóa
+            if (!confirm(`Bạn có chắc chắn muốn xóa bệnh nhân có mã số ${maSoBN} không?`)) {
+                return;
+            }
+
+            // Tìm khoa
+            const khoaIndex = data.DanhsachKhoa.findIndex(k => k.MaKhoa === maKhoa);
+            if (khoaIndex !== -1) {
+                // Tìm bệnh nhân trong khoa đó
+                const benhNhanIndex = data.DanhsachKhoa[khoaIndex].BenhNhan.findIndex(bn => bn.MaSoBN === maSoBN);
+                if (benhNhanIndex !== -1) {
+                    // Xóa bệnh nhân khỏi danh sách
+                    data.DanhsachKhoa[khoaIndex].BenhNhan.splice(benhNhanIndex, 1);
+                    // Cập nhật giao diện
+                    displayBenhNhan(maKhoa);
+                }
+            }
+        }
+
+        // Hàm để thêm mới một bệnh nhân
+        function themBenhNhan(event) {
+            event.preventDefault(); // Ngăn form tự submit
+
+            // Lấy dữ liệu từ form
+            const maSoBN = document.getElementById('maSoBN').value.trim();
+            const hoTen = document.getElementById('hoTen').value.trim();
+            const diaChi = document.getElementById('diaChi').value.trim();
+            const ngayNhapVien = document.getElementById('ngayNhapVien').value;
+            const moTaBenhAn = document.getElementById('moTaBenhAn').value.trim();
+            const soNgayNhapVien = parseInt(document.getElementById('soNgayNhapVien').value);
+
+            // Kiểm tra mã số bệnh nhân đã tồn tại chưa
+            let exists = false;
+            data.DanhsachKhoa.forEach(khoa => {
+                khoa.BenhNhan.forEach(bn => {
+                    if (bn.MaSoBN === maSoBN) {
+                        exists = true;
+                    }
+                });
+            });
+
+            if (exists) {
+                alert('Mã số bệnh nhân đã tồn tại. Vui lòng chọn mã số khác.');
+                return;
+            }
+
+            // Tạo đối tượng bệnh nhân mới
+            const benhNhanMoi = {
+                "MaSoBN": maSoBN,
+                "HoTen": hoTen,
+                "DiaChi": diaChi,
+                "NgayNhapVien": ngayNhapVien,
+                "MoTaBenhAn": moTaBenhAn,
+                "SoNgayNhapVien": soNgayNhapVien
+            };
+
+            // Xác định khoa để thêm bệnh nhân
+            const selectKhoa = document.getElementById('selectKhoa');
+            const maKhoa = selectKhoa.value;
+
+            if (maKhoa === "") {
+                alert('Vui lòng chọn khoa để thêm bệnh nhân.');
+                return;
+            }
+
+            // Thêm bệnh nhân vào khoa
+            const khoa = data.DanhsachKhoa.find(k => k.MaKhoa === maKhoa);
+            if (khoa) {
+                khoa.BenhNhan.push(benhNhanMoi);
+                // Cập nhật giao diện
+                displayBenhNhan(maKhoa);
+                // Reset form
+                document.getElementById('formThemBN').reset();
+            }
+        }
+
+        // Hàm để cập nhật mô tả bệnh án của BN002
+        function capNhatMoTaBenhAn(event) {
+            event.preventDefault(); // Ngăn form tự submit
+
+            const moTaMoi = document.getElementById('moTaCapNhat').value.trim();
+
+            if (moTaMoi === "") {
+                alert('Vui lòng nhập mô tả bệnh án mới.');
+                return;
+            }
+
+            // Tìm bệnh nhân có MaSoBN = BN0002
+            let benhNhanCapNhat = null;
+            let maKhoaCapNhat = "";
+
+            data.DanhsachKhoa.forEach(khoa => {
+                khoa.BenhNhan.forEach(bn => {
+                    if (bn.MaSoBN === "BN0002") {
+                        bn.MoTaBenhAn = moTaMoi;
+                        benhNhanCapNhat = bn;
+                        maKhoaCapNhat = khoa.MaKhoa;
+                    }
+                });
+            });
+
+            if (benhNhanCapNhat) {
+                alert('Cập nhật mô tả bệnh án thành công.');
+                // Cập nhật giao diện nếu khoa đang chọn là khoa của bệnh nhân
+                const selectKhoa = document.getElementById('selectKhoa');
+                if (selectKhoa.value === maKhoaCapNhat) {
+                    displayBenhNhan(maKhoaCapNhat);
+                }
+                // Reset form
+                document.getElementById('formCapNhatBN002').reset();
+            } else {
+                alert('Không tìm thấy bệnh nhân có mã số BN0002.');
+            }
+        }
+
+        // Hàm để khởi tạo trang
+        function init() {
+            loadKhoa();
+
+            // Xử lý sự kiện khi chọn khoa
+            document.getElementById('selectKhoa').addEventListener('change', function() {
+                const maKhoa = this.value;
+                displayBenhNhan(maKhoa);
+            });
+
+            // Xử lý sự kiện khi submit form thêm bệnh nhân
+            document.getElementById('formThemBN').addEventListener('submit', themBenhNhan);
+
+            // Xử lý sự kiện khi submit form cập nhật mô tả bệnh án
+            document.getElementById('formCapNhatBN002').addEventListener('submit', capNhatMoTaBenhAn);
+        }
+
+        // Gọi hàm khởi tạo khi trang được tải
+        window.onload = init;
+    </script>
+</body>
+</html>
