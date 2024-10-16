@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="student.xsl" type="text/xsl"?>
+<!DOCTYPE DSLop [
+  <!ELEMENT DSLop (Lop+)>
+  <!ELEMENT Lop (TenLop, GVCN, HocSinh+)>
+  <!ELEMENT TenLop (#PCDATA)>
+  <!ELEMENT GVCN (#PCDATA)>
+  <!ELEMENT HocSinh (HoTen, NgaySinh, GioiTinh, DiaChi, SDT)>
+  <!ELEMENT HoTen (#PCDATA)>
+  <!ELEMENT NgaySinh (#PCDATA)>
+  <!ELEMENT GioiTinh (#PCDATA)>
+  <!ELEMENT DiaChi (#PCDATA)>
+  <!ELEMENT SDT (#PCDATA)>
+  
+  <!ATTLIST Lop
+    MaLop ID #REQUIRED>
+  
+  <!ATTLIST HocSinh
+    Mahs ID #REQUIRED>
+]>
+
+<DSLop> 
+  
+  <Lop MaLop="L001">
+    <TenLop>Lớp 10A</TenLop>
+    <GVCN>Nguyễn Văn A</GVCN>
+    
+    <HocSinh Mahs="HS001">
+      <HoTen>Trần Văn B</HoTen>
+      <NgaySinh>2005-09-15</NgaySinh>
+      <GioiTinh>Nam</GioiTinh>
+      <DiaChi>Hà Nội</DiaChi>
+      <SDT>0123456789</SDT>
+    </HocSinh>
+    
+    <HocSinh Mahs="HS002">
+      <HoTen>Nguyễn Thị C</HoTen>
+      <NgaySinh>2005-11-20</NgaySinh>
+      <GioiTinh>Nu</GioiTinh>
+      <DiaChi>Đà Nẵng</DiaChi>
+      <SDT>0987654321</SDT>
+    </HocSinh>
+    
+    <HocSinh Mahs="HS003">
+      <HoTen>Đỗ Văn D</HoTen>
+      <NgaySinh>2005-05-25</NgaySinh>
+      <GioiTinh>Nam</GioiTinh>
+      <DiaChi>Hải Phòng</DiaChi>
+      <SDT>0123456780</SDT>
+    </HocSinh>
+  </Lop>
+
+  <Lop MaLop="L002">
+    <TenLop>Lớp 10B</TenLop>
+    <GVCN>Nguyễn Văn H</GVCN>
+    
+    <HocSinh Mahs="HS004">
+      <HoTen>Nguyễn Thị E</HoTen>
+      <NgaySinh>2005-07-30</NgaySinh>
+      <GioiTinh>Nu</GioiTinh>
+      <DiaChi>Hà Nội</DiaChi>
+      <SDT>0987654320</SDT>
+    </HocSinh>
+
+    <HocSinh Mahs="HS005">
+      <HoTen>Trần Văn F</HoTen>
+      <NgaySinh>2005-12-10</NgaySinh>
+      <GioiTinh>Nam</GioiTinh>
+      <DiaChi>Đà Nẵng</DiaChi>
+      <SDT>0123456781</SDT>
+    </HocSinh>
+  </Lop>
+
+</DSLop>

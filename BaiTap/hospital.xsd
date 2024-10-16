@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Định nghĩa kiểu dữ liệu ID với ít nhất 5 ký tự -->
+  <xs:simpleType name="MaIDType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="5"/>
+      <xs:pattern value="\w{5,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Định nghĩa kiểu dữ liệu cho tên với tối đa 100 ký tự -->
+  <xs:simpleType name="TenType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Định nghĩa phần tử Khoa -->
+  <xs:element name="Khoa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="BenhNhan" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HoTen" type="TenType"/>
+              <xs:element name="DiaChi" type="xs:string"/>
+              <xs:element name="NgayNhapVien" type="xs:date"/>
+              <xs:element name="MoTaBenhAn" type="xs:string"/>
+              <xs:element name="SoNgayNhapVien" type="xs:integer"/>
+            </xs:sequence>
+            <xs:attribute name="MaSoBN" type="MaIDType" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="MaKhoa" type="MaIDType" use="required"/>
+      <xs:attribute name="TenKhoa" type="TenType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

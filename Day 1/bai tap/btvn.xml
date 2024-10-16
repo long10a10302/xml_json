@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library [
+    <!ELEMENT library (book*)>
+    <!ELEMENT book (article:title, person:author, article:price)>
+    <!ATTLIST library
+        xmlns CDATA #IMPLIED
+        xmlns:article CDATA #IMPLIED
+        xmlns:person CDATA #IMPLIED>
+    <!ATTLIST book
+        id CDATA #IMPLIED
+        article:id CDATA #REQUIRED>
+    <!ELEMENT article:title (#PCDATA)>
+    <!ELEMENT person:author (#PCDATA)>
+    <!ELEMENT article:price (#PCDATA)>
+]>
+<library xmlns="https://aptechvietnam.com.vn/"
+         xmlns:article="https://article.aptechvietnam.com.vn/"
+         xmlns:person="https://biolography.aptechvietnam.com.vn/">
+    <book article:id="b1">
+        <article:title>Book 1</article:title>
+        <person:author>Jon Griham</person:author>
+        <article:price>99</article:price> 
+    </book>
+    <book article:id="b2">
+        <article:title>Book 2</article:title>
+        <person:author>Jon Smith</person:author>
+        <article:price>99</article:price>
+    </book>
+    <book article:id="b3">
+        <article:title>Book 3</article:title>
+        <person:author>Jon Ten Hag</person:author>
+        <article:price>99</article:price>
+    </book>
+</library>

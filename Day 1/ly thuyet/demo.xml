@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Dinh nghia DTD-->
+<!DOCTYPE aptech [
+    <!ELEMENT aptech (student)*>
+    <!ELEMENT student (code, fullname, birthday, sexflag)>
+    <!ELEMENT code (#PCDATA)>
+    <!ELEMENT fullname (#PCDATA)> 
+    <!ELEMENT birthday (#PCDATA)>
+    <!ELEMENT sexflag EMPTY>
+    <!ATTLIST sexflag gender CDATA "N">
+]>
+<aptech>
+    <student>
+        <code>AP001</code>
+        <fullname>Nguyen Viet Hung</fullname>
+        <birthday><![CDATA[2002/08/01]]> </birthday>
+        <sexflag gender="N"/>
+    </student>
+    <student>
+        <code>AP002</code>
+        <fullname>Le Tan Hiep</fullname>
+        <birthday>2002/08/31</birthday>
+        <sexflag gender="N"/>
+    </student>
+    <student>
+        <code>AP003</code>
+        <fullname>Duong Ngoc Anh</fullname>
+        <birthday>2002/05/27</birthday>
+        <sexflag gender="N"/>
+    </student>
+</aptech>

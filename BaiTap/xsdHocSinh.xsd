@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/xsdHocSinh.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/xsdHocSinh.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name ="DSLop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name ="Lop" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenLop">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GVCN" type="xs:string"/>
+              <xs:element name="HocSinh" type="HocSinhType" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name ="MaLop" type="IDType" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- Define data type Hoc Sinh-->
+  <xs:complexType name="HocSinhType">
+    <xs:sequence>
+      <xs:element name="HoTen" type="xs:string"/>
+      <xs:element name="NgaySinh" type="xs:date"/>
+      <xs:element name="GioiTinh" type="GioiTinhType"/>
+      <xs:element name ="DiaChi" type="xs:string"/>
+      <xs:element name ="SDT" type="SDTType"/>
+    </xs:sequence>
+    <xs:attribute name ="Mahs" type="IDType"/>
+  </xs:complexType>
+  <!-- Define data type Giới Tính-->
+  <xs:simpleType name="GioiTinhType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nam"/>
+      <xs:enumeration value="Nu"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Define data type Số điện thoại-->
+  <xs:simpleType name="SDTType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Define data type ID -->
+  <xs:simpleType name="IDType">
+    <xs:restriction base="xs:ID">
+      <xs:minLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

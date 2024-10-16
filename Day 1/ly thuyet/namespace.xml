@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library
+   
+    xmlns:aptech="https://www.aptechworldwide.com/lander"
+    xmlns:hungbi="https://www.facebook.com/bi.hung.56614"
+>
+
+    <aptech:book>
+        <aptech:title>JAVA</aptech:title>
+        <aptech:description>Lap trinh Java</aptech:description>
+    </aptech:book>
+
+    <hungbi:book>
+        <hungbi:title>Something</hungbi:title>
+        <hungbi:description>Description something</hungbi:description>
+    </hungbi:book>
+
+    <A:book xmlns:A="https://www.facebook.com/profile.php?id=100009118732596">
+        <A:title>C+</A:title>
+        <A:description>
+            Lap trinh C+
+        </A:description>
+    </A:book>
+
+</library>

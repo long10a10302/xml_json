@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hokhau [
+    <!ELEMENT hokhau (chuHos)>
+    <!ELEMENT chuHos (chuHo)*>
+    <!ELEMENT chuHo (id, hoten, cccd, namsinh, thuongtru, sothanhvien, thanhviens)>
+    <!ELEMENT book (booktitle, author, price)>
+    <!ELEMENT booktitle (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT thanhviens (thanhvien*)>
+    <!ELEMENT thanhvien (id, idchuho, hoten, cccd, namsinh, thuongchu)>
+    <!ELEMENT id (#PCDATA)>
+    <!ELEMENT idchuho (#PCDATA)>
+    <!ELEMENT hoten (#PCDATA)>
+    <!ELEMENT cccd (#PCDATA)>
+    <!ELEMENT namsinh (#PCDATA)>
+    <!ELEMENT thuongtru (#PCDATA)>
+    <!ELEMENT thuongchu (#PCDATA)>
+    <!ELEMENT sothanhvien (#PCDATA)>
+]>
+<hokhau>
+    <chuHos>
+        <chuHo>
+            <id>01</id>
+            <hoten>Nguyen Van A</hoten>
+            <cccd>123456789</cccd>
+            <namsinh>1980</namsinh>
+            <thuongtru>Ha Noi</thuongtru>
+            <sothanhvien>03</sothanhvien>
+            <thanhviens>
+                <thanhvien>
+                    <id>001</id>
+                    <idchuho>01</idchuho>
+                    <hoten>Nguyen Van B</hoten>
+                    <cccd>987654321</cccd>
+                    <namsinh>1999</namsinh>
+                    <thuongchu>Ha Noi</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>002</id>
+                    <idchuho>01</idchuho>
+                    <hoten>Nguyen Thi C</hoten>
+                    <cccd>456789123</cccd>
+                    <namsinh>2001</namsinh>
+                    <thuongchu>Ha Noi</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>003</id>
+                    <idchuho>01</idchuho>
+                    <hoten>Nguyen Van D</hoten>
+                    <cccd>321654987</cccd>
+                    <namsinh>2003</namsinh>
+                    <thuongchu>Ha Noi</thuongchu>
+                </thanhvien>
+            </thanhviens>
+        </chuHo>
+        <chuHo>
+            <id>02</id>
+            <hoten>Tran Van E</hoten>
+            <cccd>234567890</cccd>
+            <namsinh>1985</namsinh>
+            <thuongtru>Hai Phong</thuongtru>
+            <sothanhvien>03</sothanhvien>
+            <thanhviens>
+                <thanhvien>
+                    <id>004</id>
+                    <idchuho>02</idchuho>
+                    <hoten>Tran Thi F</hoten>
+                    <cccd>876543210</cccd>
+                    <namsinh>2000</namsinh>
+                    <thuongchu>Hai Phong</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>005</id>
+                    <idchuho>02</idchuho>
+                    <hoten>Tran Van G</hoten>
+                    <cccd>135792468</cccd>
+                    <namsinh>2002</namsinh>
+                    <thuongchu>Hai Phong</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>006</id>
+                    <idchuho>02</idchuho>
+                    <hoten>Tran Van H</hoten>
+                    <cccd>246813579</cccd>
+                    <namsinh>2004</namsinh>
+                    <thuongchu>Hai Phong</thuongchu>
+                </thanhvien>
+            </thanhviens>
+        </chuHo>
+        <chuHo>
+            <id>03</id>
+            <hoten>Le Van I</hoten>
+            <cccd>345678901</cccd>
+            <namsinh>1990</namsinh>
+            <thuongtru>Da Nang</thuongtru>
+            <sothanhvien>03</sothanhvien>
+            <thanhviens>
+                <thanhvien>
+                    <id>007</id>
+                    <idchuho>03</idchuho>
+                    <hoten>Le Thi J</hoten>
+                    <cccd>987654320</cccd>
+                    <namsinh>1998</namsinh>
+                    <thuongchu>Da Nang</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>008</id>
+                    <idchuho>03</idchuho>
+                    <hoten>Le Van K</hoten>
+                    <cccd>112233445</cccd>
+                    <namsinh>2002</namsinh>
+                    <thuongchu>Da Nang</thuongchu>
+                </thanhvien>
+                <thanhvien>
+                    <id>009</id>
+                    <idchuho>03</idchuho>
+                    <hoten>Le Van L</hoten>
+                    <cccd>223344556</cccd>
+                    <namsinh>2005</namsinh>
+                    <thuongchu>Da Nang</thuongchu>
+                </thanhvien>
+            </thanhviens>
+        </chuHo>
+    </chuHos>
+</hokhau>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="hospitall.xsl" type="text/xsl"?>
+
+<DanhsachKhoa>
+    <Khoa MaKhoa="K0001" TenKhoa="Phòng Nội">
+        <BenhNhan MaSoBN="BN0001">
+            <HoTen>Nguyễn Văn A</HoTen>
+            <DiaChi>Hà Nội</DiaChi>
+            <NgayNhapVien>2024-10-01</NgayNhapVien>
+            <MoTaBenhAn>Bệnh nhân bị tiểu đường loại 2.</MoTaBenhAn>
+            <SoNgayNhapVien>10</SoNgayNhapVien>
+        </BenhNhan>
+        <BenhNhan MaSoBN="BN0002">
+            <HoTen>Trần Thị B</HoTen>
+            <DiaChi>Hồ Chí Minh</DiaChi>
+            <NgayNhapVien>2024-10-05</NgayNhapVien>
+            <MoTaBenhAn>Bệnh nhân bị cao huyết áp.</MoTaBenhAn>
+            <SoNgayNhapVien>5</SoNgayNhapVien>
+        </BenhNhan>
+    </Khoa>
+    <Khoa MaKhoa="K0002" TenKhoa="Phòng Ngoại">
+        <BenhNhan MaSoBN="BN0003">
+            <HoTen>Đỗ Văn C</HoTen>
+            <DiaChi>Đà Nẵng</DiaChi>
+            <NgayNhapVien>2024-10-10</NgayNhapVien>
+            <MoTaBenhAn>Bệnh nhân bị viêm phổi.</MoTaBenhAn>
+            <SoNgayNhapVien>7</SoNgayNhapVien>
+        </BenhNhan>
+        <BenhNhan MaSoBN="BN0004">
+            <HoTen>Phạm Thị D</HoTen>
+            <DiaChi>Hải Phòng</DiaChi>
+            <NgayNhapVien>2024-10-12</NgayNhapVien>
+            <MoTaBenhAn>Bệnh nhân bị gãy xương.</MoTaBenhAn>
+            <SoNgayNhapVien>3</SoNgayNhapVien>
+        </BenhNhan>
+    </Khoa>
+</DanhsachKhoa>
